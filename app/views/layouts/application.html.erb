@@ -9,8 +9,17 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
   <body>
+    <header>
+      <nav>
+        <ul>
+          <h1>CostManagement</h1>
+          <li>概要</li>
+          <li>ログイン</li>
+          <li>新規登録</li>
+        </ul>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>
