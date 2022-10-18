@@ -14,12 +14,19 @@
       <nav>
         <ul>
           <h1>CostManagement</h1>
-          <li>概要</li>
-          <li>ログイン</li>
-          <li>新規登録</li>
+          <% if user_signed_in? %>
+            <%= link_to 'プロフィール変更', edit_user_registration_path %>
+            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+          <% else %>
+            <li>概要</li>
+            <%= link_to '新規登録', new_user_registration_path %>
+            <%= link_to 'ログイン', new_user_session_path %>
+          <% end %>
         </ul>
       </nav>
     </header>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>

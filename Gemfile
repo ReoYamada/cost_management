@@ -48,8 +48,16 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
+# Devise
+gem 'devise'
+# 日本語化
+gem 'rails-i18n'
+gem 'devise-i18n'
+
 group :development, :test do
   gem 'rspec-rails', '~> 6.0.0'
+  gem 'pry-rails'
+  gem 'factory_bot_rails'
 end
 
 group :development do
