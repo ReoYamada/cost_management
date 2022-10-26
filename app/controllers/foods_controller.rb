@@ -36,6 +36,7 @@ class FoodsController < ApplicationController
   def destroy
     @food = Food.find(params[:id])
     @food.destroy
+    flash[:notice] = '食材情報を削除しました'
     redirect_to foods_path
   end
 
