@@ -1,0 +1,15 @@
+<h1>メニュー登録</h1>
+<%= form_for(@menu, url: menus_path, method: :post) do |f| %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <div>
+    <%= f.label :name, 'メニュー名' %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :price, '価格' %>
+    <%= f.number_field :price %>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>
