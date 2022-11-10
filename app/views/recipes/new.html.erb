@@ -1,0 +1,16 @@
+<h1>レシピ登録</h1>
+<%= form_for(@recipe, url: recipes_path, method: :post) do |f| %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :menu_id, value: params[:menu_id] %>
+  <div>
+    <%= f.label :food_id, '食材' %>
+    <%= f.collection_select :food_id, @foods.all, :id, :name, { include_blank: '食材を選択してください' } %>
+  </div>
+  <div>
+    <%= f.label :gram, 'グラム数' %>
+    <%= f.number_field :gram %>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -29,7 +29,7 @@ class MenusController < ApplicationController
   def update
     @menu = Menu.find(params[:id])
     if @menu.update(menu_params)
-      flash[:notice] = '食材情報を更新しました'
+      flash[:notice] = 'メニューを更新しました'
       redirect_to menus_path
     else
       flash[:alert] = '更新できませんでした'

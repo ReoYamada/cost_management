@@ -1,4 +1,29 @@
 <h1>メニュー詳細</h1>
 
-<p>メニュー名</p><%= @menu.name %>
-<p>価格</p><%= @menu.price %>
+<h5>メニュー名</h5><%= @menu.name %>
+<h5>価格</h5><%= @menu.price %>円
+<table>
+  <tr>
+    <th>使用食材</th>
+    <th>使用グラム数</th>
+  </tr>
+  <% @cost_price = 0 %>
+  <% @menu.recipes.each do |recipe| %>
+    <tr>
+      <td><%= recipe.food.name %></td>
+      <td><%= recipe.gram %></td>
+      <td><%= link_to '編集', edit_recipe_path(recipe) %></td>
+      <td><%= button_to '削除', recipe_path(recipe), method: :delete, form: { data: { turbo_confirm: "本当に削除しますか？" } } %></td>
+    </tr>
+    <% @cost_price += recipe.food.unit_price_per_kilo * recipe.gram %>
+  <% end %>
+  <tr>
+    <th>原価</th>
+    <th>原価率</th>
+  </tr>
+  <tr>
+    <td><%= @cost_price %>円</td>
+    <td><%= @cost_price / @menu.price.to_f * 100 %>%</td>
+  </tr>
+</table>
+<%= link_to 'レシピ登録', new_recipe_path(menu_id: @menu) %>
