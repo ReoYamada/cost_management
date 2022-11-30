@@ -1,0 +1,14 @@
+<h1>出数編集</h1>
+<%= form_for(@order, url: order_path) do |f| %>
+  <div>
+    <%= @order.year_and_month %>
+  </div>
+  <%= @order.menu.name %>
+  <div>
+    <%= f.label :output, '出数' %>
+    <%= f.number_field :output %>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>

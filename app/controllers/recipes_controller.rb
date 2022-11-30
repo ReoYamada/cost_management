@@ -6,12 +6,14 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
+    @foods = Food.where(user_id: current_user.id)
     if @recipe.save
       flash[:notice] = 'レシピ登録が完了しました'
       redirect_to menu_path(@recipe.menu)
     else
       flash[:alert] = '登録できませんでした'
-      redirect_to new_recipe_path
+      flash[:errors] = @recipe.errors.full_messages
+      redirect_to new_recipe_path(menu_id: @recipe.menu_id)
     end
   end
 

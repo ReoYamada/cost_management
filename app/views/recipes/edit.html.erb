@@ -1,8 +1,7 @@
 <h1>レシピ編集</h1>
 <%= form_for(@recipe, url: recipe_path) do |f| %>
   <div>
-    <%= f.label :food_id, '食材' %>
-    <%= f.collection_select :food_id, @foods.all, :id, :name, { include_blank: '食材を選択してください' } %>
+    <a>食材名</a><%= @recipe.food.name %>
   </div>
   <div>
     <%= f.label :gram, 'グラム数' %>

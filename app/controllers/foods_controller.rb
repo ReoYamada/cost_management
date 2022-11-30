@@ -14,7 +14,7 @@ class FoodsController < ApplicationController
       redirect_to foods_path
     else
       flash[:alert] = '登録できませんでした'
-      redirect_to new_food_path
+      render new_food_path, status: :unprocessable_entity
     end
   end
 

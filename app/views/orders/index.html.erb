@@ -1,0 +1,36 @@
+<h1>出数管理</h1>
+<%= form_tag(order_search_path, :method => "get") do %>
+  <%= date_select(:date, :year_and_month, discard_day: true) %>
+  <%= submit_tag "表示する" %>
+<% end %>
+<% if @view == 'index' %>
+  <b>トータル出数</b>
+<% else %>
+  <%= @orders.first.year_and_month.strftime("%Y年 %m月") %>
+<% end %>
+<table>
+  <tr>
+    <th>メニュー名</th>
+    <th>出数</th>
+  </tr>
+  <% @menus.each do |menu| %>
+    <tr>
+      <% if menu.name.present? %>
+        <td>
+          <%= menu.name %>
+        </td>
+      <% end %>
+      <% if @orders.present? %>
+        <td>
+          <%= @orders.where(menu_id: menu.id).sum { |hash| hash[:output] } %>
+        </td>
+        <td>
+          <% if @view == 'search' %>
+            <%= link_to '編集', edit_order_path(@orders.where(menu_id: menu.id).first.id) %>
+          <% end %>
+        </td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
+<%= link_to '月間出数新規登録', new_order_path %>

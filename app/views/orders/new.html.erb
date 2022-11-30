@@ -1,0 +1,25 @@
+<h1>出数登録</h1>
+<% if flash[:error].present? %>
+  <div class="alert alert-warning">
+    <ul>
+      <% flash[:error].each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= form_for(@order, url: orders_path) do |f| %>
+  <%= f.label :year_and_month, '年月' %>
+  <%= f.date_select :year_and_month, discard_day: true  %>
+  <% @menus.each do |menu| %>
+    <%= f.hidden_field :user_id, value: current_user.id, name: "orders[][user_id]" %>
+    <%= f.hidden_field :menu_id, value: menu.id, name: "orders[][menu_id]" %>
+    <div>
+      <%= f.label :output, menu.name %>
+      <%= f.number_field :output, name: "orders[][output]" %>
+    </div>
+  <%end%>
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>

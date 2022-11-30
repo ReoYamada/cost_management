@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   resources :foods, :only => [:index, :new, :create, :edit, :update, :destroy]
   resources :recipes, :only => [:new, :create, :edit, :update, :destroy]
   resources :menus
-  get '/',  to:"top#index"
+  resources :orders, :only => [:index, :new, :create, :edit, :update, :destroy]
+  get '/',  to: 'top#index'
+  get 'order_search', to: 'orders#search'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

@@ -14,7 +14,7 @@ class MenusController < ApplicationController
       redirect_to menus_path
     else
       flash[:alert] = '登録できませんでした'
-      redirect_to new_menu_path
+      render new_menu_path, status: :unprocessable_entity
     end
   end
 
