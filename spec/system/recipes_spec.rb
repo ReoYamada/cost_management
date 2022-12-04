@@ -32,21 +32,22 @@ RSpec.describe 'Recipes', type: :system do
       end
 
       context '食材名が未入力' do
-        it 'レシピの登録が失敗すること' do
+        it '食材名の未入力エラーメッセージが表示されること' do
           select '食材を選択してください', from: '食材'
           fill_in 'グラム数', with: 50
           click_on '登録する'
           expect(page).to have_content '登録できませんでした'
-          expect(current_path).to eq new_recipe_path
+          expect(page).to have_content '食材を入力してください'
         end
       end
 
       context 'グラム数が未入力' do
-        it 'レシピ登録が失敗すること' do
+        it 'グラム数の未入力エラーメッセージが表示されること' do
           select food2.name, from: '食材'
           fill_in 'グラム数', with: ''
           click_on '登録する'
           expect(page).to have_content '登録できませんでした'
+          expect(page).to have_content 'グラム数を入力してください'
         end
       end
     end
@@ -64,32 +65,20 @@ RSpec.describe 'Recipes', type: :system do
     describe 'レシピ編集ページテスト' do
       context '入力内容が正常' do
         it 'レシピの登録が成功し、メニュー詳細ページに表示されること' do
-          select food2.name, from: '食材'
           fill_in 'グラム数', with: 50
           click_on '更新する'
           expect(page).to have_content 'レシピを更新しました'
           expect(current_path).to eq menu_path(menu)
-          expect(page).to have_content food2.name
-        end
-      end
-
-      context '食材名が未入力' do
-        it 'レシピの登録が失敗すること' do
-          select '食材を選択してください', from: '食材'
-          fill_in 'グラム数', with: 50
-          click_on '更新する'
-          expect(page).to have_content '更新できませんでした'
-          expect(current_path).to eq edit_recipe_path(recipe)
+          expect(page).to have_content '50'
         end
       end
 
       context 'グラム数が未入力' do
-        it 'レシピ登録が失敗すること' do
-          select food2.name, from: '食材'
+        it 'グラム数の未入力エラーメッセージが表示されること' do
           fill_in 'グラム数', with: ''
           click_on '更新する'
           expect(page).to have_content '更新できませんでした'
-          expect(current_path).to eq edit_recipe_path(recipe)
+          expect(page).to have_content 'グラム数を入力してください'
         end
       end
     end

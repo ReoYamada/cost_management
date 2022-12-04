@@ -1,5 +1,6 @@
 <h1>メニュー編集</h1>
 <%= form_for(@menu, url: menu_path) do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
   <div>
     <%= f.label :name, 'メニュー名' %>
     <%= f.text_field :name %>

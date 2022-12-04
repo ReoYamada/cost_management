@@ -28,8 +28,8 @@ class RecipesController < ApplicationController
       flash[:notice] = 'レシピを更新しました'
       redirect_to menu_path(@recipe.menu)
     else
-      flash[:alert] = '更新できませんでした'
-      redirect_to edit_recipe_path(@recipe)
+      flash.now[:alert] = '更新できませんでした'
+      render 'recipes/edit', status: :unprocessable_entity
     end
   end
 

@@ -6,7 +6,7 @@
 <% if @view == 'index' %>
   <b>トータル出数</b>
 <% else %>
-  <%= @orders.first.year_and_month.strftime("%Y年 %m月") %>
+  <%= "#{params[:date]['year_and_month(1i)']}年#{params[:date]['year_and_month(2i)']}月" %>
 <% end %>
 <table>
   <tr>

@@ -1,5 +1,6 @@
 <h1>出数編集</h1>
 <%= form_for(@order, url: order_path) do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
   <div>
     <%= @order.year_and_month %>
   </div>

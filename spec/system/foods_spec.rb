@@ -33,22 +33,22 @@ RSpec.describe 'Foods', type: :system do
       end
 
       context '食材名が未入力' do
-        it '食材の新規登録が失敗すること' do
+        it '食材名の未入力エラーメッセージが表示されること' do
           fill_in '食材名', with: ''
           fill_in 'キログラム単価', with: 100
           click_on '登録する'
           expect(page).to have_content '登録できませんでした'
-          expect(current_path).to eq new_food_path
+          expect(page).to have_content '食材名を入力してください'
         end
       end
 
       context '食材単価が未入力' do
-        it '食材の新規登録が失敗すること' do
+        it 'キログラム単価の未入力エラーメッセージが表示されること' do
           fill_in '食材名', with: 'hoge'
           fill_in 'キログラム単価', with: ''
           click_on '登録する'
           expect(page).to have_content '登録できませんでした'
-          expect(current_path).to eq new_food_path
+          expect(page).to have_content 'キログラム単価を入力してください'
         end
       end
     end
@@ -93,22 +93,22 @@ RSpec.describe 'Foods', type: :system do
         end
 
         context '食材名が未入力' do
-          it '食材の新規登録が失敗すること' do
+          it '食材名の未入力エラーメッセージが表示されること' do
             fill_in '食材名', with: ''
             fill_in 'キログラム単価', with: 100
             click_on '更新する'
             expect(page).to have_content '更新できませんでした'
-            expect(current_path).to eq edit_food_path(food)
+            expect(page).to have_content '食材名を入力してください'
           end
         end
 
         context '食材単価が未入力' do
-          it '食材の新規登録が失敗すること' do
+          it 'キログラム単価の未入力エラーメッセージが表示されること' do
             fill_in '食材名', with: 'hoge'
             fill_in 'キログラム単価', with: ''
             click_on '更新する'
             expect(page).to have_content '更新できませんでした'
-            expect(current_path).to eq edit_food_path(food)
+            expect(page).to have_content 'キログラム単価を入力してください'
           end
         end
       end

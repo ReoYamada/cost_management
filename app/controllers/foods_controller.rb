@@ -13,7 +13,7 @@ class FoodsController < ApplicationController
       flash[:notice] = '食材登録が完了しました'
       redirect_to foods_path
     else
-      flash[:alert] = '登録できませんでした'
+      flash.now[:alert] = '登録できませんでした'
       render new_food_path, status: :unprocessable_entity
     end
   end
@@ -28,8 +28,8 @@ class FoodsController < ApplicationController
       flash[:notice] = '食材情報を更新しました'
       redirect_to foods_path
     else
-      flash[:alert] = '更新できませんでした'
-      redirect_to edit_food_path(params[:id])
+      flash.now[:alert] = '更新できませんでした'
+      render 'foods/edit', status: :unprocessable_entity
     end
   end
 

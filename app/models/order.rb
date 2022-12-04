@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
   belongs_to :menu
-  validates :output, :year_and_month, presence: true
+  validates :output, :year_and_month, :user_id, presence: true
   validates :output, numericality: { only_integer: true }
   validates :year_and_month, uniqueness: { scope: :menu_id }
 

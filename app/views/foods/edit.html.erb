@@ -1,5 +1,6 @@
 <h1>商品編集</h1>
 <%= form_for(@food, url: food_path) do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
   <div>
     <%= f.label :name, '食材名' %>
     <%= f.text_field :name %>

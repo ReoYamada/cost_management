@@ -13,7 +13,7 @@ class MenusController < ApplicationController
       flash[:notice] = 'メニュー登録が完了しました'
       redirect_to menus_path
     else
-      flash[:alert] = '登録できませんでした'
+      flash.now[:alert] = '登録できませんでした'
       render new_menu_path, status: :unprocessable_entity
     end
   end
@@ -32,8 +32,8 @@ class MenusController < ApplicationController
       flash[:notice] = 'メニューを更新しました'
       redirect_to menus_path
     else
-      flash[:alert] = '更新できませんでした'
-      redirect_to edit_menu_path(params[:id])
+      flash.now[:alert] = '更新できませんでした'
+      render 'menus/edit', status: :unprocessable_entity
     end
   end
 

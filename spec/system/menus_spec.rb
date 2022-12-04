@@ -33,22 +33,22 @@ RSpec.describe 'Menus', type: :system do
       end
 
       context 'メニュー名が未入力' do
-        it 'メニュー登録が失敗すること' do
+        it 'メニュー名の未入力エラーメッセージが表示されること' do
           fill_in 'メニュー名', with: ''
           fill_in '価格', with: 500
           click_on '登録する'
           expect(page).to have_content '登録できませんでした'
-          expect(current_path).to eq new_menu_path
+          expect(page).to have_content 'メニュー名を入力してください'
         end
       end
 
       context 'メニュー価格が未入力' do
-        it 'メニュー登録が失敗すること' do
+        it 'メニュー価格の未入力エラーメッセージが表示されること' do
           fill_in 'メニュー名', with: 'hoge'
           fill_in '価格', with: ''
           click_on '登録する'
           expect(page).to have_content '登録できませんでした'
-          expect(current_path).to eq new_menu_path
+          expect(page).to have_content '価格を入力してください'
         end
       end
     end
@@ -84,22 +84,22 @@ RSpec.describe 'Menus', type: :system do
       end
 
       context 'メニュー名が未入力' do
-        it 'メニュー登録が失敗すること' do
+        it 'メニュー名の未入力エラーメッセージが表示されること' do
           fill_in 'メニュー名', with: ''
           fill_in '価格', with: 500
           click_on '更新する'
           expect(page).to have_content '更新できませんでした'
-          expect(current_path).to eq edit_menu_path(menu)
+          expect(page).to have_content 'メニュー名を入力してください'
         end
       end
 
       context 'メニュー価格が未入力' do
-        it 'メニュー登録が失敗すること' do
+        it 'メニュー価格の未入力エラーメッセージが表示されること' do
           fill_in 'メニュー名', with: 'hoge'
           fill_in '価格', with: ''
           click_on '更新する'
           expect(page).to have_content '更新できませんでした'
-          expect(current_path).to eq edit_menu_path(menu)
+          expect(page).to have_content '価格を入力してください'
         end
       end
     end

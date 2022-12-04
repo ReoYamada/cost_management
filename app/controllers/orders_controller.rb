@@ -43,8 +43,8 @@ class OrdersController < ApplicationController
       flash[:notice] = '出数を更新しました'
       redirect_to orders_path
     else
-      flash[:alert] = '更新できませんでした'
-      redirect_to edit_order_path(params[:id])
+      flash.now[:alert] = '更新できませんでした'
+      render 'orders/edit', status: :unprocessable_entity
     end
   end
 

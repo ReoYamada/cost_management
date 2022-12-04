@@ -1,5 +1,6 @@
 <h1>レシピ編集</h1>
 <%= form_for(@recipe, url: recipe_path) do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
   <div>
     <a>食材名</a><%= @recipe.food.name %>
   </div>
