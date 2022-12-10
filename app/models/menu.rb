@@ -5,6 +5,7 @@ class Menu < ApplicationRecord
   validates :name, :price, :user_id, presence: true
   validates :price, numericality: { only_integer: true }
 
+  # メニューの原価を計算する機能
   def menu_cost
     cost = 0
     recipes.each do |recipe|

@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <!-- リセットcss -->
+    <link href="https://unpkg.com/sanitize.css" rel="stylesheet"/>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
@@ -15,20 +16,20 @@
         <ul>
           <h1>CostManagement</h1>
           <% if user_signed_in? %>
-            <%= link_to 'プロフィール変更', edit_user_registration_path %>
-            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+            <li><%= link_to 'プロフィール変更', edit_user_registration_path %></li>
+            <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
           <% else %>
-            <li>概要</li>
-            <%= link_to '新規登録', new_user_registration_path %>
-            <%= link_to 'ログイン', new_user_session_path %>
+            <li><a href="#about">概要</a></li>
+            <li><%= link_to '新規登録', new_user_registration_path %></li>
+            <li><%= link_to 'ログイン', new_user_session_path %></li>
           <% end %>
         </ul>
       </nav>
     </header>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <div class="wrapper">
-      <% if current_user.present? %>
+    <p class="notice flash_message"><%= notice %></p>
+    <p class="alert flash_message"><%= alert %></p>
+    <% if current_user.present? %>
+      <div class="wrapper">
         <div class="side">
           <ul>
             <li><%= link_to 'マイページ', user_path(current_user) %></li>
@@ -39,10 +40,13 @@
             <li><%= link_to '月間出数管理', orders_path %></li>
           </ul>
         </div>
-      <% end %>
-      <div class="content">
-        <%= yield %>
+        <div class="content">
+          <%= yield %>
+        </div>
       </div>
-    </div>
+    <% else %>
+      <%= yield %>
+    <% end %>
+    <footer><p>CostManagement</p></footer>
   </body>
 </html>

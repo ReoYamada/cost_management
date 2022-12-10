@@ -12,6 +12,9 @@
   <tr>
     <th>メニュー名</th>
     <th>出数</th>
+    <% if @view == 'search' %>
+      <th></th>
+    <% end %>
   </tr>
   <% @menus.each do |menu| %>
     <tr>
@@ -24,11 +27,11 @@
         <td>
           <%= @orders.where(menu_id: menu.id).sum { |hash| hash[:output] } %>
         </td>
-        <td>
-          <% if @view == 'search' %>
+        <% if @view == 'search' %>
+          <td>
             <%= link_to '編集', edit_order_path(@orders.where(menu_id: menu.id).first.id) %>
-          <% end %>
-        </td>
+          </td>
+        <% end %>
       <% end %>
     </tr>
   <% end %>

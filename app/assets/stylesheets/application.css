@@ -16,7 +16,10 @@
 
 /* ヘッダー */
 header {
-  background-color:rgb(203, 203, 203);
+  background-color: rgb(203, 203, 203);
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 header h1 {
@@ -30,6 +33,7 @@ header ul {
   display: flex;
   margin: 0px;
   padding: 5px 0px;
+  align-items: center;
 }
 
 header li {
@@ -38,24 +42,74 @@ header li {
   letter-spacing: 2px;
 }
 
+/* フラッシュメッセージ */
+.flash_message {
+  margin: 1px;
+}
+
+.notice { 
+  background-color: rgba(126, 252, 0, 0.3);
+}
+
+.alert {
+  background-color: rgba(255, 0, 0, 0.3)
+}
+
 /* トップページ */
 .first_view {
-  height: 400px; 
   background-image: url(top_image);
   background-size: 100% auto;
   background-color: rgba(255,255,255,0.5);
   background-blend-mode: lighten;
   background-repeat: no-repeat;
+  margin-top: 48px;
 }
 
 .top_message {
   text-align: center;
+  padding-bottom: 100px;
 }
 
 .top_message h1 {
   padding-top: 20%;
   margin-top: 0px;
   font-family: cursive;
+}
+
+#about {
+  background-color: #e2e2e3;
+  padding-bottom: 20px;
+}
+
+#about h2 {
+  text-align: center;
+  margin-top: 0px;
+  padding-top: 30px;
+}
+
+.about_image {
+  width: 300px;
+  height: 300px;
+  border-radius:50%;
+  background-position: -40px 0px;
+  background-image: url("top_about.jpg");
+  background-size: cover;
+}
+
+.about_container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.about_explanation {
+  width: 50%;
+}
+
+footer {
+  text-align: center;
+  margin: 0px;
+  padding: 10px 0px;
+  background-color: rgb(203, 203, 203);
 }
 
 /* サイドバー */
@@ -79,5 +133,67 @@ header li {
 .content {
   background-color:red;
   width: 70%;
-  margin-left:10px;
+  margin-left: 10px;
+}
+
+/* 表 */
+table {
+  text-align: center;
+  border-collapse: collapse;
+  border: 1px solid;
+ }
+
+ th {
+  padding: 10px;
+  background-color: #e3faf8;
+  border: dashed 1px #748ca5;
+ }
+ 
+ td {
+  padding: 10px;
+  border: dashed 1px #748ca5;
+ }
+
+ tr:nth-child(odd) {
+  background: #e9faf9;
+ }
+
+ tr:nth-child(even) {
+   background: white;
+ }
+
+ #goukei {
+   background: rgb(195, 195, 242)
+ }
+
+@media screen and (max-width: 959px) {
+	/* 959px以下に適用されるCSS（タブレット用） */
+  .about_container {
+    display: block;
+  }
+
+  .about_image {
+    margin: 0 auto;
+  }
+
+  .about_explanation {
+    margin: 0 auto;
+  }
+
+}
+@media screen and (max-width: 480px) {
+	/* 480px以下に適用されるCSS（スマホ用） */
+  #about {
+    color: red;
+  }
+
+  header li {
+    display: none;
+  }
+
+  .top_message {
+    padding-bottom: 20px;
+  }
+
+  
 }
