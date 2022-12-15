@@ -8,31 +8,35 @@
     <!-- リセットcss -->
     <link href="https://unpkg.com/sanitize.css" rel="stylesheet"/>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
+    <!-- <%= javascript_importmap_tags %> -->
   </head>
   <body>
     <header>
+      <div class="logo">
+        <h1>CostManagement</h1>
+      </div>
       <nav>
         <ul>
-          <h1>CostManagement</h1>
           <% if user_signed_in? %>
             <li><%= link_to 'プロフィール変更', edit_user_registration_path %></li>
             <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
           <% else %>
-            <li><a href="#about">概要</a></li>
+            <li><a href="/#about">概要</a></li>
             <li><%= link_to '新規登録', new_user_registration_path %></li>
             <li><%= link_to 'ログイン', new_user_session_path %></li>
           <% end %>
         </ul>
       </nav>
     </header>
-    <p class="notice flash_message"><%= notice %></p>
-    <p class="alert flash_message"><%= alert %></p>
+    <div class="flash">
+      <p class="notice flash_message"><%= notice %></p>
+      <p class="alert flash_message"><%= alert %></p>
+    </div>
     <% if current_user.present? %>
       <div class="wrapper">
         <div class="side">
           <ul>
-            <li><%= link_to 'マイページ', user_path(current_user) %></li>
+            <li><%= link_to 'マイページ', users_path %></li>
             <li><%= link_to '食材登録', new_food_path %></li>
             <li><%= link_to '食材一覧', foods_path %></li>
             <li><%= link_to 'メニュー登録', new_menu_path %></li>
@@ -41,7 +45,9 @@
           </ul>
         </div>
         <div class="content">
-          <%= yield %>
+          <div class="content_main">
+            <%= yield %>
+          </div>
         </div>
       </div>
     <% else %>

@@ -1,7 +1,7 @@
 class Menu < ApplicationRecord
   belongs_to :user
-  has_many :recipes
-  has_many :orders
+  has_many :recipes, dependent: :destroy
+  has_many :orders, dependent: :destroy
   validates :name, :price, :user_id, presence: true
   validates :price, numericality: { only_integer: true }
 

@@ -1,25 +1,32 @@
-<h1>出数登録</h1>
-<% if flash[:error].present? %>
-  <div class="alert alert-warning">
-    <ul>
-      <% flash[:error].each do |message| %>
-        <li><%= message %></li>
+<div class="box">
+  <div class="box-inner">
+    <h1>出数登録</h1>
+    <% if flash[:error].present? %>
+      <div class="alert alert-warning">
+        <ul>
+          <% flash[:error].each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <%= form_for(@order, url: orders_path) do |f| %>
+      <dl>
+        <dt><%= f.label :year_and_month, '年月' %></dt>
+        <dd><%= f.date_select :year_and_month, discard_day: true  %></dd>
+      </dl>
+      <% @menus.each do |menu| %>
+        <%= f.hidden_field :user_id, value: current_user.id, name: "orders[][user_id]" %>
+        <%= f.hidden_field :menu_id, value: menu.id, name: "orders[][menu_id]" %>
+        <dl>
+          <dt><%= f.label :output, menu.name %></dt>
+          <dd><%= f.number_field :output, name: "orders[][output]" %></dd>
+        </dl>
       <% end %>
-    </ul>
+      <div class="form_btn">
+        <%= f.submit class: 'btn' %>
+      </div>
+    <% end %>
   </div>
-<% end %>
-<%= form_for(@order, url: orders_path) do |f| %>
-  <%= f.label :year_and_month, '年月' %>
-  <%= f.date_select :year_and_month, discard_day: true  %>
-  <% @menus.each do |menu| %>
-    <%= f.hidden_field :user_id, value: current_user.id, name: "orders[][user_id]" %>
-    <%= f.hidden_field :menu_id, value: menu.id, name: "orders[][menu_id]" %>
-    <div>
-      <%= f.label :output, menu.name %>
-      <%= f.number_field :output, name: "orders[][output]" %>
-    </div>
-  <%end%>
-  <div>
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
+

@@ -1,14 +1,22 @@
 <h1>出数管理</h1>
-<%= form_tag(order_search_path, :method => "get") do %>
-  <%= date_select(:date, :year_and_month, discard_day: true) %>
-  <%= submit_tag "表示する" %>
-<% end %>
+<h4>データ検索</h4>
+<div class="search_form">
+  <div>
+    <%= form_tag(order_search_path, :method => "get") do %>
+      <%= date_select(:date, :year_and_month, discard_day: true) %>
+      <%= submit_tag "表示する" %>
+    <% end %>
+  </div>
+  <div>
+    <%= link_to '累計出数表示', orders_path, class: 'total_search' %>
+  </div>
+</div>
 <% if @view == 'index' %>
-  <b>トータル出数</b>
+  <h3>トータル出数</h3>
 <% else %>
-  <%= "#{params[:date]['year_and_month(1i)']}年#{params[:date]['year_and_month(2i)']}月" %>
+  <h3><%= "#{params[:date]['year_and_month(1i)']}年#{params[:date]['year_and_month(2i)']}月" %></h3>
 <% end %>
-<table>
+<table class="index_table">
   <tr>
     <th>メニュー名</th>
     <th>出数</th>
@@ -36,4 +44,4 @@
     </tr>
   <% end %>
 </table>
-<%= link_to '月間出数新規登録', new_order_path %>
+<%= link_to '月間出数新規登録', new_order_path, class: 'btn' %>

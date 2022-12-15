@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users
-  resources :users, :only => [:show]
+  devise_for :users, controllers: {
+    registrations: "users/registrations",
+    sessions: "users/sessions"
+  }
+  resources :users, :only => [:index]
   resources :foods, :only => [:index, :new, :create, :edit, :update, :destroy]
   resources :recipes, :only => [:new, :create, :edit, :update, :destroy]
   resources :menus

@@ -1,4 +1,5 @@
 class Order < ApplicationRecord
+  belongs_to :user
   belongs_to :menu
   validates :output, :year_and_month, :user_id, presence: true
   validates :output, numericality: { only_integer: true }

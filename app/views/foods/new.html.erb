@@ -1,16 +1,20 @@
-<h1>食材登録</h1>
-<%= form_for(@food, url: foods_path, method: :post) do |f| %>
-  <%= render 'layouts/error_messages', model: f.object %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
-  <div>
-    <%= f.label :name, '食材名' %>
-    <%= f.text_field :name %>
+<div class="box">
+  <div class="box-inner">
+    <h1>食材登録</h1>
+    <%= form_for(@food, url: foods_path, method: :post) do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <dl>
+        <dt><%= f.label :name, '食材名' %></dt>
+        <dd><%= f.text_field :name %></dd>
+      </dl>
+      <dl>
+        <dt><%= f.label :unit_price_per_kilo, 'キログラム単価' %></dt>
+        <dd><%= f.number_field :unit_price_per_kilo %></dd>
+      </dl>
+      <div class="form_btn">
+        <%= f.submit class: 'btn' %>
+      </div>
+    <% end %>
   </div>
-  <div>
-    <%= f.label :unit_price_per_kilo, 'キログラム単価' %>
-    <%= f.number_field :unit_price_per_kilo %>
-  </div>
-  <div>
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

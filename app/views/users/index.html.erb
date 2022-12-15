@@ -1,0 +1,66 @@
+<h1>マイページ</h1>
+<h4>データ検索</h4>
+<div class="search_form">
+  <div>
+    <%= form_tag(user_search_path, :method => "get") do %>
+      <%= date_select(:date, :year_and_month, discard_day: true) %>
+      <%= submit_tag "表示する" %>
+    <% end %>
+  </div>
+  <div>
+    <%= link_to '累計データ表示', users_path, class: 'total_search' %>
+  </div>
+</div>
+<% if @view == 'index' %>
+  <h3>累計データ</h3>
+<% else %>
+  <h3><%= "#{params[:date]['year_and_month(1i)']}年#{params[:date]['year_and_month(2i)']}月度データ" %></h3>
+<% end %>
+<% if @orders.blank? %>
+  <div><b>データがありません</b></div>
+<% else %>
+  <div class="top_table">
+    <table>
+      <tr>
+        <th class="fixd">メニュー名</th>
+        <th>価格</th>
+        <th>原価率</th>
+        <th>販売数</th>
+        <th>売上高</th>
+        <th>原価</th>
+        <th>粗利益</th>
+        <th>構成比</th>
+      </tr>
+      <% output_sum = 0 %>
+      <% sales_sum = 0 %>
+      <% cost_sum = 0 %>
+      <% profit_sum = 0 %>
+      <% @orders.group(:menu_id).each do |order| %>
+        <tr>
+          <th><%= order.menu.name %></th>
+          <td>¥<%= order.menu.price.to_formatted_s(:delimited) %></td>
+          <td><%= (order.menu.menu_cost / order.menu.price.to_f * 100).round(2) %>%</td>
+          <td><%= output = @orders.output_sum(order.menu) %></td>
+          <td>¥<%= (sales = @orders.output_sum(order.menu) * order.menu.price).to_formatted_s(:delimited) %></td>
+          <td>¥<%= (cost = @orders.output_sum(order.menu) * order.menu.menu_cost).to_formatted_s(:delimited) %></td>
+          <td>¥<%= (profit = @orders.output_sum(order.menu) * order.menu.price - @orders.output_sum(order.menu) * order.menu.menu_cost).to_formatted_s(:delimited) %></td>
+          <td><%= @orders.occupancy(order.menu) %>%</td>
+        </tr>
+        <% output_sum += output %>
+        <% sales_sum += sales %>
+        <% cost_sum += cost %>
+        <% profit_sum += profit %>
+      <% end %>
+      <tr id="goukei">
+        <th>合計</th>
+        <td></td>
+        <td><%= (cost_sum / sales_sum.to_f * 100).round(2) %>%</td>
+        <td><%= output_sum %></td>
+        <td>¥<%= sales_sum.to_formatted_s(:delimited) %></td>
+        <td>¥<%= cost_sum.to_formatted_s(:delimited) %></td>
+        <td>¥<%= profit_sum.to_formatted_s(:delimited) %></td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+<% end %>

@@ -1,4 +1,5 @@
 class RecipesController < ApplicationController
+  before_action :authenticate_user!
   def new
     @recipe = Recipe.new
     @foods = Food.where(user_id: current_user.id)

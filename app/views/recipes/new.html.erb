@@ -1,25 +1,30 @@
-<h1>レシピ登録</h1>
-<%= form_for(@recipe, url: recipes_path, method: :post) do |f| %>
-  <% if flash[:errors].present? %>
-    <div class="alert alert-warning">
-      <ul>
-        <% flash[:errors].each do |error| %>
-          <li><%= error %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.hidden_field :menu_id, value: params[:menu_id] %>
-  <div>
-    <%= f.label :food_id, '食材' %>
-    <%= f.collection_select :food_id, @foods.all, :id, :name, { include_blank: '食材を選択してください' } %>
+<div class="box">
+  <div class="box-inner">
+    <h1>レシピ登録</h1>
+    <%= form_for(@recipe, url: recipes_path, method: :post) do |f| %>
+      <% if flash[:errors].present? %>
+        <div class="alert alert-warning">
+          <ul>
+            <% flash[:errors].each do |error| %>
+              <li><%= error %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :menu_id, value: params[:menu_id] %>
+      <dl>
+        <dt><%= f.label :food_id, '食材' %></dt>
+        <dd><%= f.collection_select :food_id, @foods.all, :id, :name, { include_blank: '食材を選択してください' } %></dd>
+      </dl>
+      <dl>
+        <dt><%= f.label :gram, 'グラム数' %></dt>
+        <dd><%= f.number_field :gram %></dd>
+      </dl>
+      <div class="form_btn">
+        <%= f.submit class: 'btn' %>
+      </div>
+    <% end %>
   </div>
-  <div>
-    <%= f.label :gram, 'グラム数' %>
-    <%= f.number_field :gram %>
-  </div>
-  <div>
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
+

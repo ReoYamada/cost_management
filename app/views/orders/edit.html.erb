@@ -1,15 +1,20 @@
-<h1>出数編集</h1>
-<%= form_for(@order, url: order_path) do |f| %>
-  <%= render 'layouts/error_messages', model: f.object %>
-  <div>
-    <%= @order.year_and_month %>
+<div class="box">
+  <div class="box-inner">
+    <h1>出数編集</h1>
+    <%= form_for(@order, url: order_path) do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
+      <dl>
+        <dt><%= @order.year_and_month.strftime('%Y年%m月') %></dt>
+        <dd><%= @order.menu.name %></dd>
+      </dl>
+      <dl>
+        <dt><%= f.label :output, '出数' %></dt>
+        <dd><%= f.number_field :output %></dd>
+      </dl>
+      <div class="form_btn">
+        <%= f.submit class: 'btn' %>
+      </div>
+    <% end %>
   </div>
-  <%= @order.menu.name %>
-  <div>
-    <%= f.label :output, '出数' %>
-    <%= f.number_field :output %>
-  </div>
-  <div>
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
+
