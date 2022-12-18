@@ -54,6 +54,8 @@ gem 'devise'
 gem 'rails-i18n'
 gem 'devise-i18n'
 
+gem 'mysql2'
+
 group :development, :test do
   gem 'rspec-rails', '~> 6.0.0'
   gem 'pry-rails'
