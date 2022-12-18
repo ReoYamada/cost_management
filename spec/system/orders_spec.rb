@@ -7,7 +7,7 @@ RSpec.describe 'Orders', type: :system do
   before do
     driven_by(:rack_test)
     sign_in user
-    visit user_path(user)
+    visit users_path
   end
 
   it '月間出数管理をクリックしたとき管理画面にアクセスすること' do

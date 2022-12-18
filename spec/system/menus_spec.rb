@@ -6,7 +6,7 @@ RSpec.describe 'Menus', type: :system do
   before do
     driven_by(:rack_test)
     sign_in user
-    visit user_path(user)
+    visit users_path
   end
 
   describe 'メニュー登録テスト' do

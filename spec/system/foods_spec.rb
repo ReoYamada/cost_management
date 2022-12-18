@@ -6,7 +6,7 @@ RSpec.describe 'Foods', type: :system do
   before do
     driven_by(:rack_test)
     sign_in user
-    visit user_path(user)
+    visit users_path
   end
 
   describe '商品登録テスト' do
