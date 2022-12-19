@@ -42,6 +42,7 @@ header li {
   height: 100%;
   display: block;
   letter-spacing: 2px;
+  font-size: 1.3em;
 }
 
 header a {
@@ -74,6 +75,16 @@ header a:hover {
 }
 
 /* トップページ */
+.top_page h2 {
+  background: #dfefff;
+  box-shadow: 0px 0px 0px 5px #dfefff;
+  border: dashed 2px white;
+  padding: 0.2em 0.5em;
+  width: 50%;
+  margin: 0px auto;
+  font-family: "Comic Sans MS";
+}
+
 .first_view {
   background-image: url(top_image);
   background-size: 100% auto;
@@ -84,7 +95,7 @@ header a:hover {
 
 .top_message {
   text-align: center;
-  padding-bottom: 100px;
+  padding-bottom: 70px;
 }
 
 .top_message h1 {
@@ -96,18 +107,14 @@ header a:hover {
 #about {
   background-color: #e2e2e3;
   padding-bottom: 20px;
-}
-
-#about h2 {
   text-align: center;
-  margin-top: 0px;
   padding-top: 30px;
 }
 
 .about_image {
   width: 300px;
   height: 300px;
-  border-radius:50%;
+  border-radius: 50%;
   background-position: -40px 0px;
   background-image: url("top_about.jpg");
   background-size: cover;
@@ -116,6 +123,7 @@ header a:hover {
 .about_container {
   display: flex;
   justify-content: space-around;
+  padding: 30px 0px;
 }
 
 .about_explanation {
@@ -127,6 +135,53 @@ footer {
   margin: 0px;
   padding: 10px 0px;
   background-color: rgb(203, 203, 203);
+}
+
+.recommend {
+  background-color: rgb(248, 248, 248);
+  text-align: center;
+  padding-top: 50px;
+}
+
+.item_wrapper {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 0px;
+  flex-wrap: wrap;
+}
+
+.manager {
+  background-image: url("manager.jpg");
+  background-position: -200px -10px;
+}
+
+.owner {
+  background-image: url("owner.jpg");
+  background-position: -130px -30px;
+}
+
+.developer {
+  background-image: url("developer.jpg");
+  background-size: 500px;
+  background-position: -40px 0px;
+}
+
+.recommend_image {
+  height: 300px;
+  width: 300px;
+  border-radius: 30px;
+  color: rgb(119, 119, 119);
+  font-size: 70px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-bottom: 20px;
+}
+
+.recommend_image p {
+  margin-bottom: 0px;
+  -webkit-text-stroke: 2px white;
 }
 
 /* ログインページ */
@@ -291,8 +346,17 @@ color: black;
   width: 80%;
   margin: 0 auto 50px;
 }
+
+.menu {
+  display: none;
+}
+
 @media screen and (max-width: 959px) {
 	/* 959px以下に適用されるCSS（タブレット用） */
+  .top_page {
+    padding-bottom: 50px;
+  }
+
   .about_container {
     display: block;
   }
@@ -305,20 +369,34 @@ color: black;
     margin: 0 auto;
   }
 
-}
-@media screen and (max-width: 480px) {
-	/* 480px以下に適用されるCSS（スマホ用） */
-  #about {
-    color: red;
-  }
-
   header li {
     display: none;
   }
 
+  .icon {
+    font-size: 2em;
+    color: white;
+  }
+
+  .menu {
+    height: 60px;
+    background-color: rgb(50, 50, 50);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    z-index: 3;
+    width: 100%;
+  }
+
+  footer {
+    display: none;
+  }  
+}
+@media screen and (max-width: 480px) {
+	/* 480px以下に適用されるCSS（スマホ用） */
   .top_message {
     padding-bottom: 20px;
   }
-
-  
 }
