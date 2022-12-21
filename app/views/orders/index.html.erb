@@ -19,7 +19,9 @@
 <table class="index_table">
   <tr>
     <th>メニュー名</th>
-    <th>出数</th>
+    <% if @orders.present? %>
+      <th>出数</th>
+    <% end %>
     <% if @view == 'search' %>
       <th></th>
     <% end %>
