@@ -38,9 +38,11 @@
           <%= @orders.where(menu_id: menu.id).sum { |hash| hash[:output] } %>
         </td>
         <% if @view == 'search' %>
-          <td>
-            <%= link_to '編集', edit_order_path(@orders.where(menu_id: menu.id).first.id) %>
-          </td>
+          <% if @orders.where(menu_id: menu.id).present? %>
+            <td>
+              <%= link_to '編集', edit_order_path(@orders.where(menu_id: menu.id).first.id) %>
+            </td>
+          <% end %>
         <% end %>
       <% end %>
     </tr>
