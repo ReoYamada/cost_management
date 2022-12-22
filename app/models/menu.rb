@@ -9,7 +9,7 @@ class Menu < ApplicationRecord
   def menu_cost
     cost = 0
     recipes.each do |recipe|
-      cost += recipe.food.unit_price_per_kilo * recipe.gram
+      cost += recipe.food.unit_price_per_kilo * recipe.gram / 1000
     end
     cost
   end
