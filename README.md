@@ -3,7 +3,10 @@
 ## アプリケーション概要  
 メニューの理論上の原価を計算するアプリです。
 ## URL
-hoge.com〜
+https://cryptic-waters-39450.herokuapp.com/
+## ログインアカウント
+yamadanonarsu@icloud.com
+123456
 ## 技術スタック
 Rails 7.0.4  
 ruby 2.7.6  
