@@ -5,8 +5,8 @@
 ## URL
 https://cryptic-waters-39450.herokuapp.com/
 ## ログインアカウント
-yamadanonarsu@icloud.com
-123456
+yamadanonarisu@gmail.com
+111111
 ## 技術スタック
 Rails 7.0.4  
 ruby 2.7.6  
