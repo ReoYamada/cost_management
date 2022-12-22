@@ -1,18 +1,4 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+@import "bootstrap";
 
 /* ヘッダー */
 header {
@@ -226,6 +212,10 @@ footer {
   margin-top: 20px;
 }
 
+.responsive {
+  display: none;
+}
+
 .wrapper {
   display: flex;
 }
@@ -233,6 +223,7 @@ footer {
 /* コンテンツ */
 .content {
   width: 80%;
+  padding-top: 50px;
   padding-bottom: 100px;
   background-color:#fdfdfd;
 }
@@ -244,12 +235,16 @@ footer {
 
 .content h1 {
   margin-left: 50px;
+  margin-bottom: 30px;
 }
 
 /* マイページ */
 .search_form {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 15px 0;
+  height:60px;
 }
 
 .total_search {
@@ -354,6 +349,7 @@ color: black;
 
 @media screen and (max-width: 959px) {
 	/* 959px以下に適用されるCSS（タブレット用） */
+  // トップページ
   .top_page {
     padding-bottom: 50px;
   }
@@ -377,6 +373,22 @@ color: black;
   .icon {
     font-size: 2em;
     color: white;
+  }
+
+  .side {
+    position: fixed;
+    z-index: 3;
+    display: none;
+    width: 100%;
+    background-color:rgba(50, 50, 50, 0.9)
+  }
+
+  .responsive {
+    display: block;
+  }
+
+  .content {
+    width: 100%;
   }
 
   .menu {

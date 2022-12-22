@@ -14,14 +14,19 @@
   </head>
   <body>
     <header>
-      <div class="logo">
-        <h1>CostManagement</h1>
-      </div>
+      <%= link_to "/" do%>
+        <div class="logo">
+          <h1>CostManagement</h1>
+        </div>
+      <% end %>
       <nav>
         <ul>
           <% if user_signed_in? %>
             <li><%= link_to 'プロフィール変更', edit_user_registration_path %></li>
             <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+            <button class="navbar-toggler responsive" type="button" onclick="showbox();" >
+              <i class="fas fa-bars"></i>
+            </button>
           <% else %>
             <li><a href="/#about">概要</a></li>
             <li><%= link_to '新規登録', new_user_registration_path %></li>
@@ -31,19 +36,28 @@
       </nav>
     </header>
     <div class="flash">
-      <p class="notice flash_message"><%= notice %></p>
-      <p class="alert flash_message"><%= alert %></p>
+      <% if notice %>
+        <p class="notice flash_message"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert flash_message"><%= alert %></p>
+      <% end %>
     </div>
-    <% if current_user.present? %>
+    <% if current_user %>
       <div class="wrapper">
-        <div class="side">
+        <div class="side" id="side">
           <ul>
+            <button class="navbar_hide responsive" type="button" onclick="hidebox();" >
+              <li>メニューを閉じる</li>
+            </button>
             <li><%= link_to 'マイページ', users_path %></li>
             <li><%= link_to '食材登録', new_food_path %></li>
             <li><%= link_to '食材一覧', foods_path %></li>
             <li><%= link_to 'メニュー登録', new_menu_path %></li>
             <li><%= link_to 'メニュー一覧', menus_path %></li>
             <li><%= link_to '月間出数管理', orders_path %></li>
+            <li class="responsive" ><%= link_to 'プロフィール変更', edit_user_registration_path %></li>
+            <li class="responsive" ><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
           </ul>
         </div>
         <div class="content">
@@ -57,4 +71,12 @@
     <% end %>
     <footer><p>CostManagement</p></footer>
   </body>
+  <script>
+    function showbox(){
+      document.getElementById("side").style.display = "block";
+    }
+    function hidebox(){
+      document.getElementById("side").style.display = "none";
+    }
+  </script>
 </html>
