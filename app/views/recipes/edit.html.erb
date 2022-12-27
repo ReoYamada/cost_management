@@ -1,0 +1,19 @@
+<div class="box">
+  <div class="box-inner">
+    <h1>レシピ編集</h1>
+    <%= form_for(@recipe, url: recipe_path) do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
+      <dl>
+        <dt>食材名</dt>
+        <dd><%= @recipe.food.name %></dd>
+      </dl>
+      <dl>
+        <dt><%= f.label :gram, 'グラム数' %></dt>
+        <dd><%= f.number_field :gram %></dd>
+      </dl>
+      <div class="form_btn">
+        <%= f.submit class: 'btn' %>
+      </div>
+    <% end %>
+  </div>
+</div>

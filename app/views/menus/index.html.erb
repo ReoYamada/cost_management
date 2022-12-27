@@ -1,0 +1,19 @@
+<h1>メニュー一覧</h1>
+<table class="index_table">
+  <tr>
+    <th>メニュー名</th>
+    <th>価格（円）</th>
+    <th>原価（円）</th>
+    <th colspan="3"></th>
+  </tr>
+  <% @menus.each do |menu| %>
+    <tr>
+      <td><%= menu.name %></td>
+      <td><%= menu.price %></td>
+      <td><%= menu.menu_cost %></td>
+      <td><%= button_to '詳細', menu_path(menu), method: :get %></td>
+      <td><%= button_to '編集', edit_menu_path(menu), method: :get %></td>
+      <td><%= button_to '削除', menu_path(menu), method: :delete, form: { data: { turbo_confirm: "本当に削除しますか？" } } %></td>
+    </tr>
+  <% end %>
+</table>

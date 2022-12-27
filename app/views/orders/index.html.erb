@@ -1,0 +1,51 @@
+<h1>出数管理</h1>
+<h4>データ検索</h4>
+<div class="search_form">
+  <div>
+    <%= form_tag(order_search_path, :method => "get") do %>
+      <%= date_select(:date, :year_and_month, discard_day: true) %>
+      <%= submit_tag "表示する" %>
+    <% end %>
+  </div>
+  <div>
+    <%= link_to '累計出数表示', orders_path, class: 'total_search' %>
+  </div>
+</div>
+<% if @view == 'index' %>
+  <h3>トータル出数</h3>
+<% else %>
+  <h3><%= "#{params[:date]['year_and_month(1i)']}年#{params[:date]['year_and_month(2i)']}月" %></h3>
+<% end %>
+<table class="index_table">
+  <tr>
+    <th>メニュー名</th>
+    <% if @orders.present? %>
+      <th>出数</th>
+    <% end %>
+    <% if @view == 'search' %>
+      <th></th>
+    <% end %>
+  </tr>
+  <% @menus.each do |menu| %>
+    <tr>
+      <% if menu.name.present? %>
+        <td>
+          <%= menu.name %>
+        </td>
+      <% end %>
+      <% if @orders.present? %>
+        <td>
+          <%= @orders.where(menu_id: menu.id).sum { |hash| hash[:output] } %>
+        </td>
+        <% if @view == 'search' %>
+          <% if @orders.where(menu_id: menu.id).present? %>
+            <td>
+              <%= link_to '編集', edit_order_path(@orders.where(menu_id: menu.id).first.id) %>
+            </td>
+          <% end %>
+        <% end %>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
+<%= link_to '月間出数新規登録', new_order_path, class: 'btn' %>

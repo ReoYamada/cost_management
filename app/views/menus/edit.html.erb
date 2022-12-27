@@ -1,0 +1,19 @@
+<div class="box">
+  <div class="box-inner">
+    <h1>メニュー編集</h1>
+    <%= form_for(@menu, url: menu_path) do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
+      <dl>
+        <dt><%= f.label :name, 'メニュー名' %></dt>
+        <dd><%= f.text_field :name %></dd>
+      </dl>
+      <dl>
+        <dt><%= f.label :price, '価格' %></dt>
+        <dd><%= f.number_field :price %></dd>
+      </dl>
+      <div class="form_btn">
+        <%= f.submit class: 'btn' %>
+      </div>
+    <% end %>
+  </div>
+</div>>

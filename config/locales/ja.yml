@@ -25,6 +25,20 @@ ja:
         unconfirmed_email: 未確認Eメール
         unlock_token: ロック解除用トークン
         updated_at: 更新日
+      food:
+        name: 食材名
+        unit_price_per_kilo: キログラム単価
+      menu:
+        name: メニュー名
+        price: 価格
+      order:
+        output: 出数
+        year_and_month: 指定の月
+      recipe:
+        menu: メニュー
+        food: 食材
+        gram: グラム数
+        food_id: 選択した食材
     models:
       user: ユーザー
   devise:
@@ -138,6 +152,7 @@ ja:
       expired: の有効期限が切れました。新しくリクエストしてください。
       not_found: は見つかりませんでした。
       not_locked: はロックされていません。
+      taken: は登録済みです。
       not_saved:
         one: エラーが発生したため %{resource} は保存されませんでした。
         other: "%{count} 件のエラーが発生したため %{resource} は保存されませんでした。"

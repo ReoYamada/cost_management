@@ -1,8 +1,39 @@
-<div class="container">
+<div class="top_page">
   <div class="first_view">
     <div class="top_message">
       <h1>CostManagement</h1>
       <p>食材原価への追求</p>
     </div>
   </div>
+  <div id="about">
+    <h2>About</h2>
+    <div class="about_container">
+      <div class="about_image"></div>
+      <div class="about_explanation">
+        <h3>原価計算アプリ</h3>
+        <p>このサイトでは食材やメニューなど登録することにより
+          理論原価を算出し、実際の原価との差異を確認することができます。
+          差異を確認することにより、原価が高い理由はメニューにあるものなのか
+          食材調理や廃棄などのロスにあるものなのかが確認できます。
+          <br>メニュー開発や構成などにお役立てください。</p>
+      </div>
+    </div>
+  </div>
+  <div class="recommend">
+    <h2>Recommend</h2>
+    <h3>こんな方におすすめ！</h3>
+    <div class="item_wrapper">
+      <div class="manager recommend_image"><p>店長</p></div>
+      <div class="developer recommend_image"><p>開発部</p></div>
+      <div class="owner recommend_image"><p>オーナー</p></div>
+    </div>
+  </div>
+</div>
+<div class="menu">
+  <%= link_to new_user_session_path do %>
+    <i class="fas fa-sign-in-alt icon">ログイン</i>
+  <% end %>
+  <%= link_to new_user_registration_path do %>
+    <i class="fas fa-user-plus icon">新規登録</i>
+  <% end %>
 </div>
