@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/',  to: 'top#index'
   get 'order_search', to: 'orders#search'
   get 'user_search', to: 'users#search'
+  post 'guest_sign_in', to: 'top#guest_sign_in'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
