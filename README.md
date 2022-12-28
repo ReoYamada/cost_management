@@ -9,14 +9,40 @@ Rails 7.0.4
 ruby 2.7.6  
 devise
 ## 利用方法
-1. メール認証による会員登録をします。  
+1. メール認証による会員登録をします。
+<p>  
+  <img src="app/assets/images/demo1.png" width="500px">
+  <img src="app/assets/images/demo2.png" width="500px">
+</p>
+
 2. 食材登録より、食材名とキログラムの単価を入力します。食材一覧で登録食材が確認できます。  
-3. メニュー登録より、メニュー名と価格を入力します。こちらもメニュー一覧で確認ができます。  
+<p>
+  <img src="app/assets/images/demo3.png" width="500px">
+  <img src="app/assets/images/demo4.png" width="500px">
+</p>
+
+3. メニュー登録より、メニュー名と価格を入力します。こちらもメニュー一覧で確認ができます。 
+<p>
+  <img src="app/assets/images/demo5.png" width="500px">
+  <img src="app/assets/images/demo6.png" width="500px">
+</p> 
+
 4. メニュー一覧のメニュー詳細からレシピ登録ができます。登録した食材を選択し、使用グラム数を入力します。  
+<p>
+  <img src="app/assets/images/demo7.png" width="500px">
+  <img src="app/assets/images/demo8.png" width="500px">
+</p>
+
 5. 月間種数管理ページの月間出数新規登録より、年月と出数を入力します。  
+<p>
+  <img src="app/assets/images/demo9.png" width="500px">
+  <img src="app/assets/images/demo10.png" width="500px">
+</p>
 
 マイページに登録メニューの・原価率・販売数・原価・売上・粗利益・構成比などが表示されます。  
-また、検索より任意の月のデータを表示することができます。
+また、検索より任意の月のデータを表示することができます。  
+<img src="app/assets/images/demo11.png" width="500px">
+
 ## 目指した課題解決
 飲食店では棚卸しと仕入れ金額により原価を算出しますが、メニューにより原価率が違うため、原価率が高い要因が掴みづらいです。
 その為何の対策をすれば良いかわからず対策が中々打ちづらいのが現状です。
